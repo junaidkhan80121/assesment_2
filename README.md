@@ -1,70 +1,164 @@
-# Getting Started with Create React App
+Here is a README.md file for your project:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+markdown
+Copy
+Edit
+# High Value Customers API and Frontend
 
-## Available Scripts
+This project consists of two parts:
+1. **Backend (API)**: A Flask application that provides an API for fetching high-value customers.
+2. **Frontend**: A React.js application that consumes the API and displays customer data in a sortable table.
 
-In the project directory, you can run:
+### Table of Contents
+1. [Project Setup](#project-setup)
+2. [Backend Setup](#backend-setup)
+3. [Frontend Setup](#frontend-setup)
+4. [API Endpoints](#api-endpoints)
+5. [Usage](#usage)
+6. [Tech Stack](#tech-stack)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Setup
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project requires two main components:
+- A **Flask backend** to manage the data and expose an API.
+- A **React frontend** to consume that API and display the data in an interactive table.
 
-### `npm test`
+Make sure you have **Python** and **Node.js** installed on your system.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Backend Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Install **Flask** and **pymongo**:
+   ```bash
+   pip install Flask pymongo
+Make sure MongoDB is installed and running on your local machine (or on a remote server).
+Running the Flask API
+Clone the repository or create your own Flask app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Update your MongoDB connection URL (if required) in app.py.
 
-### `npm run eject`
+Run the Flask application:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy
+Edit
+python app.py
+This will start the API server on http://127.0.0.1:5000/.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Sample Data
+You can populate the MongoDB collections with sample customer and order data by running the dummy_data.py script. This script will insert mock data into your MongoDB collections.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+bash
+Copy
+Edit
+python dummy_data.py
+API Endpoints
+GET /high-value-customers: This endpoint retrieves a list of high-value customers based on certain criteria (e.g., total spent, loyalty tier). The data is returned as a JSON array containing details such as name, email, total spent, loyalty tier, and more.
+Frontend Setup
+Prerequisites
+Install Node.js and npm on your machine.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Install Axios and Material-UI:
 
-## Learn More
+bash
+Copy
+Edit
+npm install axios @mui/material
+Running the React Application
+Create a React app or clone the repository.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Place the provided App.js code in your main app component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Make sure the frontend application connects to the correct backend URL (http://127.0.0.1:5000/high-value-customers).
 
-### Code Splitting
+Start the React development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+bash
+Copy
+Edit
+npm start
+This will start the frontend app on http://localhost:3000/.
 
-### Analyzing the Bundle Size
+API Endpoints
+1. GET /high-value-customers
+This endpoint fetches the list of high-value customers. The response is a JSON object with the following structure:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+json
+Copy
+Edit
+[
+  {
+    "customerId": "C001",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "totalSpent": 1350,
+    "averageOrderValue": 675,
+    "loyaltyTier": "Silver",
+    "lastPurchaseDate": "2024-02-15T00:00:00",
+    "isActive": true,
+    "favoriteCategory": "Clothing",
+    "categoryWiseSpend": [
+      { "category": "Electronics", "spend": 200 },
+      { "category": "Clothing", "spend": 150 },
+      { "category": "Clothing", "spend": 100 }
+    ]
+  },
+  ...
+]
+Usage
+React Frontend:
+The React app allows you to view and interact with high-value customer data. It includes:
 
-### Making a Progressive Web App
+A sortable table for displaying customer information.
+Sorting functionality on columns like Customer ID, Name, Total Spent, etc.
+A modal that shows detailed customer information when you click on the "View Details" button.
+Flask Backend:
+The Flask backend provides the /high-value-customers endpoint, which fetches high-value customers based on their spending, loyalty tier, and activity. This data is then consumed by the React frontend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Tech Stack
+Backend:
+Flask: A Python web framework used to build the API.
+MongoDB: NoSQL database used to store customer and order data.
+PyMongo: Python driver to interact with MongoDB.
+Frontend:
+React.js: JavaScript library for building the user interface.
+Material-UI: A React UI framework for styling and layout.
+Axios: A promise-based HTTP client for making API requests.
+License
+This project is open-source and available under the MIT License.
 
-### Advanced Configuration
+markdown
+Copy
+Edit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Explanation of the README:
 
-### Deployment
+1. **Project Setup**:
+   - Briefly mentions both the backend and frontend setup, explaining their prerequisites and steps to run the application.
+  
+2. **Backend Setup**:
+   - Describes the installation steps for Flask and MongoDB, and how to run the `dummy_data.py` script to populate sample data in MongoDB.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. **Frontend Setup**:
+   - Explains the setup for React and dependencies (Axios and Material-UI), and the steps to run the frontend application.
 
-### `npm run build` fails to minify
+4. **API Endpoints**:
+   - Describes the `/high-value-customers` API endpoint and the data structure returned by it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. **Usage**:
+   - Explains how the React frontend interacts with the API and the functionalities (sortable table, modal for customer details).
+  
+6. **Tech Stack**:
+   - Lists the technologies used in both the backend (Flask, MongoDB, PyMongo) and frontend (React, Material-UI, Axios).
+
+7. **License**:
+   - A placeholder for the license of your project.
+
+### How to Use the README:
+- Add it to the root of your project directory.
+- Make sure all the necessary installation and setup instructions are followed as per the READM
